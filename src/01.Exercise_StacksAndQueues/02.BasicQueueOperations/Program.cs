@@ -15,27 +15,27 @@ namespace _01
             var numberToPopOut = int.Parse(input[1]);
             var lookFor = int.Parse(input[2]);
 
-            var stack = new Stack<int>();
+            var queue = new Queue<int>();
 
             var input2 = Console.ReadLine()!.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
             for (var i = 0; i < n; i++)
             {
-                stack.Push(int.Parse(input2[i]));
+                queue.Enqueue(int.Parse(input2[i]));
             }
 
             for (var i = 0; i < numberToPopOut; i++)
             {
-                stack.TryPop(out _);
+                queue.TryDequeue(out _);
             }
 
-            if (stack.Contains(lookFor))
+            if (queue.Contains(lookFor))
             {
                 Console.WriteLine("true");
             }
             else
             {
-                Console.WriteLine(stack.Count == 0 ? 0 : stack.Min());
+                Console.WriteLine(queue.Count == 0 ? 0 : queue.Min());
             }
         }
     }
